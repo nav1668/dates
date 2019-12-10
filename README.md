@@ -25,3 +25,11 @@ Step 3
 Copy and paste your HTML index.html file,in to the htdocs folder.
 
 Start your Web browser and type "localhost/index.html" into the address bar. 
+INSTALLATION
+------------
+Install xampp for windows/linux
+https://www.apachefriends.org/download.html
+CONFIGURATION
+-------------
+
+The app has no menu or modifiable settings
