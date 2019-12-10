@@ -1,0 +1,161 @@
+<?php
+?>
+
+
+
+<label>first date</label>
+<input type="datetime-local" id="t1" value="" class="date" name="start" REQUIRED>
+<label>second date</label>
+<input type="datetime-local" id="t2" value="" class="date" name="start" REQUIRED>
+<button onclick="numOfDays()">get number of days</button>
+
+<button onclick="weekDays()">get number of weekdays days</button>
+<button onclick="weeks()">get number of weeks</button>
+
+<script >
+
+
+
+function numOfDays(){
+var startTimeStamp = document.getElementById("t1").value;
+var endTimeStamp = document.getElementById("t2").value;
+ //startTime
+var startTimeStamp = new Date(startTimeStamp);
+var month = startTimeStamp.getMonth() + 1; //months from 1-12
+var day = startTimeStamp.getDate();
+var year = startTimeStamp.getFullYear();
+var Snewdate = year + "-" + month + "-" + day;
+var Snewdate = new Date(Snewdate);
+	   
+//endtime	
+ console.log(endTimeStamp);
+var endTimeStamp = new Date(endTimeStamp);
+var month = endTimeStamp.getMonth() + 1; //months from 1-12
+var day = endTimeStamp.getDate();
+var year = endTimeStamp.getFullYear();
+var Enewdate = year + "-" + month + "-" + day;
+var Enewdate = new Date(Enewdate);
+	    
+	
+               
+// To calculate the time difference of two dates 
+var Difference_In_Time =Snewdate.getTime() - Enewdate.getTime();
+// To calculate the no. of days between two dates 
+var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+//To display the final no. of days (result) 
+document.write("Total number of days between dates  <br>"
+               + Snewdate + "<br> and <br>" 
+              + Enewdate + " is: <br> " 
+             + Difference_In_Days); 
+			 
+               
+}
+
+function weekDays(){
+               
+var startTimeStamp = document.getElementById("t1").value;
+var endTimeStamp = document.getElementById("t2").value;
+         
+	
+	
+//starttime	
+ console.log(startTimeStamp);
+var startTimeStamp = new Date(startTimeStamp);
+	var month = startTimeStamp.getMonth() + 1; //months from 1-12
+var day = startTimeStamp.getDate();
+var year = startTimeStamp.getFullYear();
+var w1 = startTimeStamp.getDay();
+var Snewdate = year + "-" + month + "-" + day+ "-" + w1;
+
+	var s=  year + "-" + month + "-" + day;
+	
+	
+//endtime	
+ console.log(endTimeStamp);
+var endTimeStamp = new Date(endTimeStamp);
+	var month = endTimeStamp.getMonth() + 1; //months from 1-12
+var day = endTimeStamp.getDate();
+var year = endTimeStamp.getFullYear();
+var w = endTimeStamp.getDay();
+var Enewdate = year + "-" + month + "-" + day + "-" + w;
+	
+	var  e  =  year + "-" + month + "-" + day;
+	
+	var count=0;
+
+	
+	Date.prototype.addDays = function (days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+};
+
+  
+    var numWorkDays = 0;
+    var currentDate = new Date(s);
+    while (currentDate <=  (new Date(e)) ){
+        // Skips Sunday and Saturday
+        if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+            numWorkDays++;
+        }
+        currentDate = currentDate.addDays(1);
+    }
+	
+	var hours=numWorkDays*24;
+	var minutues=hours*60;
+	var seconds =minutues*60; 
+	var year =numWorkDays/365;
+   document.write("Total number of weekdays between dates  <br>"
+               + startTimeStamp + "<br> and <br>" 
+              + endTimeStamp + " is: " +  numWorkDays
+              + " <br> and hours:" + hours
+                + "<br>and minutues:" + minutues
+               + "<br>and seconds:" + seconds
+				  + "<br>and year:" + year
+				  );
+
+}
+//number of weeks	
+function weeks(){
+var startTimeStamp = document.getElementById("t1").value;
+var endTimeStamp = document.getElementById("t2").value;
+ //startTime
+var startTimeStamp = new Date(startTimeStamp);
+var month = startTimeStamp.getMonth() + 1; //months from 1-12
+var day = startTimeStamp.getDate();
+var year = startTimeStamp.getFullYear();
+var Snewdate = year + "-" + month + "-" + day;
+var Snewdate = new Date(Snewdate);
+	   
+//endtime	
+ console.log(endTimeStamp);
+var endTimeStamp = new Date(endTimeStamp);
+var month = endTimeStamp.getMonth() + 1; //months from 1-12
+var day = endTimeStamp.getDate();
+var year = endTimeStamp.getFullYear();
+var Enewdate = year + "-" + month + "-" + day;
+var Enewdate = new Date(Enewdate);
+	    
+// The number of milliseconds in one week
+ //var ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+               
+// To calculate the time difference of two dates 
+var Difference_In_Time =Snewdate.getTime() - Enewdate.getTime();
+// To calculate the no. of days between two dates 
+var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+//To display the final no. of days (result) 
+	var weeks = Difference_In_Days / 7;
+	
+document.write("Total number of weeks between dates  <br>"
+               + Snewdate + "<br> and <br>" 
+              + Enewdate + " is: <br> " 
+             + weeks); 
+			 
+               
+}
+
+
+
+
+               
+               </script>
